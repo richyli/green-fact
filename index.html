@@ -506,12 +506,14 @@ function flatten(){
       flat[b+'_'+k+'stB']=C.stamps[r.stampB[k]].key;
     });
   });
+  // 布林一律轉 1/0/空字串，避免 Google Sheet 把 false 吞成空值（2026-06-07 修）
+  const b01 = v => v===true?1 : v===false?0 : '';
   // 注意力檢核 trap
   STATE.traps.forEach(r=>{ const b='trap_s'+r.study;
-    flat[b+'_side']=r.side; flat[b+'_expect']=r.expect; flat[b+'_pass']=r.pass; flat[b+'_rtMs']=r.rtMs; });
+    flat[b+'_side']=r.side; flat[b+'_expect']=r.expect; flat[b+'_pass']=b01(r.pass); flat[b+'_rtMs']=r.rtMs; });
   // 重複一致性檢核 repeat
   STATE.repeats.forEach(r=>{ const b='rep_s'+r.study;
-    flat[b+'_of']=r.of; flat[b+'_orig']=r.orig; flat[b+'_again']=r.again; flat[b+'_consistent']=r.consistent; flat[b+'_rtMs']=r.rtMs; });
+    flat[b+'_of']=r.of; flat[b+'_orig']=r.orig; flat[b+'_again']=r.again; flat[b+'_consistent']=b01(r.consistent); flat[b+'_rtMs']=r.rtMs; });
   // 位置偏誤 leftRatio（左=A）
   [1,2].forEach(st=>{ const c=STATE.sideCount[st]; const tot=c.L+c.R;
     flat['leftRatio_s'+st]= tot? +(c.L/tot).toFixed(3) : ''; });
