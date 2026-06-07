@@ -294,7 +294,7 @@ function balancedContentPair(keys){
   return {A,B};
 }
 // Study 2：戳記固定組成——「查核為真/不實/部分屬實」各恰一次（不用未經查核），保證卡內必有 trade-off（§9）
-const FIXED_STAMP_KEYS = ['verified','false','partial'];  // topN=3 → 三種各一
+const FIXED_STAMP_KEYS = ['verified','refuted','partial'];  // topN=3 → 三種各一（refuted=不實，避 Sheet 布林）
 function fixedStampSet(keys){
   // 把三種戳記隨機指派到 3 個屬性（每種一次）
   const idx = FIXED_STAMP_KEYS.map(k=>C.stamps.findIndex(s=>s.key===k));

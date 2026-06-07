@@ -39,7 +39,8 @@ window.GW_CONFIG = {
   stamps: [
     { key: 'verified', icon: '✅', label: '已查核為真', color: '#1a8a3a', bg: '#e7f6ec' },
     { key: 'partial',  icon: '⚠️', label: '部分屬實',   color: '#b8860b', bg: '#fdf6e3' },
-    { key: 'false',    icon: '❌', label: '查核：不實', color: '#c0392b', bg: '#fdecea' },
+    // key 用 'refuted' 而非 'false'：避免 Google Sheet 把字串 false 當布林假值（2026-06-07）
+    { key: 'refuted',  icon: '❌', label: '查核：不實', color: '#c0392b', bg: '#fdecea' },
     { key: 'none',     icon: '',   label: '未經查核',   color: '#9aa0a6', bg: '#f2f3f5' },
   ],
 
