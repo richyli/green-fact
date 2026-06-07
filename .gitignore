@@ -1,0 +1,16 @@
+# Public repo：只發布受測者跑問卷必需的檔案（index.html + config.js）。
+# 其餘研究內部文件、作答備份、雜物一律排除。
+
+# 本機測試下載的作答備份（含 UA / 人口學，禁止推上 public repo）
+P*.json
+*-response.json
+responses.csv
+
+# 作業系統 / 編輯器雜物
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# Python 伺服器快取
+__pycache__/
